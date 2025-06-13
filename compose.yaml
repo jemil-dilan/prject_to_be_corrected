@@ -1,0 +1,17 @@
+services:
+  db:
+    container_name: postgres_student_record
+    image: 'postgres:latest'
+    environment:
+      - 'POSTGRES_DB=studentDB'
+      - 'POSTGRES_PASSWORD=ubuntu123'
+      - 'POSTGRES_USER=postgres'
+      - 'PGDATA=/data/postgres'
+    volumes:
+      - db:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+    restart: unless-stopped
+
+volumes:
+  db:
