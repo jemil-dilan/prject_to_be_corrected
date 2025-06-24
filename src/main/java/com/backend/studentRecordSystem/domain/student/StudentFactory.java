@@ -1,6 +1,5 @@
-package com.backend.studentRecordSystem.factory.student;
+package com.backend.studentRecordSystem.domain.student;
 
-import com.backend.studentRecordSystem.domain.Student;
 import com.backend.studentRecordSystem.dto.StudentData;
 
 import java.util.List;

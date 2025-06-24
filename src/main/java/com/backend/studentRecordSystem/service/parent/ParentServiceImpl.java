@@ -2,7 +2,7 @@ package com.backend.studentRecordSystem.service.parent;
 
 import com.backend.studentRecordSystem.dto.parent.CreateParentDTO;
 import com.backend.studentRecordSystem.dto.parent.ParentDTO;
-import com.backend.studentRecordSystem.factory.parent.ParentFactory;
+import com.backend.studentRecordSystem.domain.parent.ParentFactory;
 import com.backend.studentRecordSystem.mapper.ParentMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -19,24 +19,24 @@ public class ParentServiceImpl implements ParentService {
     @Transactional(readOnly = true)
     public List<ParentDTO> getAllParents() {
         return parentFactory
-                .getAllStudents().stream().map(parentMapper :: toDto).toList();
+                .getAllParents().stream().map(parentMapper :: toDto).toList();
     }
 
     @Override
     @Transactional(readOnly = true)
     public ParentDTO getParentById(Long id) {
-        return parentMapper.toDto(parentFactory.getStudentById(id));
+        return parentMapper.toDto(parentFactory.getParentById(id));
     }
 
     @Override
     public void deleteParent(Long id) {
-        parentFactory.deleteStudent(id);
+        parentFactory.deleteParent(id);
     }
 
     @Override
     public ParentDTO createParent(CreateParentDTO createParentDTO) {
         return parentMapper.toDto(
-                parentFactory.createStudent(
+                parentFactory.createParent(
                         parentMapper.toData(createParentDTO)
                 )
         );
@@ -44,7 +44,7 @@ public class ParentServiceImpl implements ParentService {
 
     @Override
     public void updateParent(Long id, CreateParentDTO createParentDTO) {
-        parentFactory.updateStudent(
+        parentFactory.updateParent(
                 id,
                 parentMapper.toData(createParentDTO)
         );

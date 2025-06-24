@@ -1,6 +1,6 @@
 package com.backend.studentRecordSystem.repository;
 
-import com.backend.studentRecordSystem.domain.SchoolClass;
+import com.backend.studentRecordSystem.domain.classroom.SchoolClass;
 import com.backend.studentRecordSystem.domain.enums.ClassNames;
 
 import java.util.Optional;

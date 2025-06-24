@@ -32,20 +32,7 @@ public class CreateStudentTestSteps {
         assertThat(studentService.getAllStudents()).isEmpty();
     }
 
-    @When("I create a new student with the following details:")
-    public void iCreateANewStudentWithTheFollowingDetails(DataTable dataTable) {
-        Map<String, String> tableMaps = dataTable.asMap(String.class, String.class);
 
-        CreateStudentDTO createStudentDTO = CreateStudentDTO.builder().
-                firstName(tableMaps.get("firstName")).
-                lastName(tableMaps.get("lastName")).
-                dateOfBirth(LocalDate.parse(tableMaps.get("dateOfBirth"))).
-                placeOfBirth(tableMaps.get("placeOfBirth")).
-                gender(Gender.valueOf(tableMaps.get("gender"))).
-                status(StudentStatus.valueOf(tableMaps.get("status"))).
-                build();
-        studentDTO = studentService.createStudent(createStudentDTO);
-    }
 
     @Then("the student should be created successfully")
     public void theStudentShouldBeCreatedSuccessfully() {
@@ -57,4 +44,6 @@ public class CreateStudentTestSteps {
     public void theStudentDatabaseShouldContainStudent(int count) {
         assertThat(studentService.getAllStudents()).hasSize(count);
     }
+
+
 }

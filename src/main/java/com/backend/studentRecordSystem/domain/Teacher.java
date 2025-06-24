@@ -1,5 +1,6 @@
 package com.backend.studentRecordSystem.domain;
 
+import com.backend.studentRecordSystem.domain.classroom.SchoolClass;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;

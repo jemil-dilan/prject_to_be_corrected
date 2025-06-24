@@ -1,6 +1,5 @@
-package com.backend.studentRecordSystem.factory.parent;
+package com.backend.studentRecordSystem.domain.parent;
 
-import com.backend.studentRecordSystem.domain.Parent;
 import com.backend.studentRecordSystem.dto.ParentData;
 import com.backend.studentRecordSystem.exception.ConflictException;
 import com.backend.studentRecordSystem.exception.ResourceNotFoundException;
@@ -14,7 +13,7 @@ import java.util.List;
 public class ParentFactoryImpl implements ParentFactory {
     private final ParentRepository parentRepository;
     @Override
-    public Parent createStudent(ParentData parentData) {
+    public Parent createParent(ParentData parentData) {
         if (parentRepository.existsByPhoneNumber(parentData.phoneNumber())) {
             throw new ConflictException("Student with name: " + parentData.firstName()
                     + " " + parentData.lastName() + " already exists");
@@ -35,19 +34,19 @@ public class ParentFactoryImpl implements ParentFactory {
 
     @Override
     @Transactional(readOnly = true)
-    public List<Parent> getAllStudents() {
+    public List<Parent> getAllParents() {
         return parentRepository.findAll();
     }
 
     @Override
     @Transactional(readOnly = true)
-    public Parent getStudentById(Long id) {
+    public Parent getParentById(Long id) {
         return parentRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Parent with id: " + id + " was not found"));
     }
 
     @Override
-    public void updateStudent(Long id, ParentData parentData) {
+    public void updateParent(Long id, ParentData parentData) {
         if (parentRepository.existsById(id)) {
             parentRepository.save(
                     Parent.builder()
@@ -68,7 +67,7 @@ public class ParentFactoryImpl implements ParentFactory {
     }
 
     @Override
-    public void deleteStudent(Long id) {
+    public void deleteParent(Long id) {
             parentRepository.deleteById(id);
     }
 

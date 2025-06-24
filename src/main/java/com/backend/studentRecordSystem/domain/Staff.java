@@ -12,6 +12,7 @@ import lombok.experimental.SuperBuilder;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Entity
 @Data
@@ -22,9 +23,9 @@ import java.time.LocalDate;
 @Table(name = "t_staff")
 public class Staff {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "c_staff_id", nullable = false)
-    private Long id;
+    private UUID id;
     @Column(name = "c_staff_first_name", nullable = false)
     private String firstName;
     @Column(name = "c_staff_last_name", nullable = false)

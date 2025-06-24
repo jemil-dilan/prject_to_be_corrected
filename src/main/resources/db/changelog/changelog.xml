@@ -15,4 +15,5 @@
     <include file="db/changelog/2025/06/modified-changelog.xml"/>
     <include file="db/changelog/2025/06/added-section-in-classroom-changelog.xml"/>
     <include file="db/changelog/2025/06/modified-className-changelog.xml"/>
+    <include file="db/changelog/2025/06/modified-staff-changelog.xml"/>
 </databaseChangeLog>

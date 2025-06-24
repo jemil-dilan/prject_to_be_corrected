@@ -1,4 +1,4 @@
-package com.backend.studentRecordSystem.domain;
+package com.backend.studentRecordSystem.domain.classroom;
 
 import com.backend.studentRecordSystem.domain.enums.ClassNames;
 import com.backend.studentRecordSystem.dto.ClassroomData;

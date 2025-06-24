@@ -1,4 +1,7 @@
 package com.backend.studentRecordSystem.repository;
 
-public class ParentJpaRepository {
+import com.backend.studentRecordSystem.domain.parent.Parent;
+
+public interface ParentJpaRepository extends SpringRepository<Parent, Long>{
+    boolean existsByPhoneNumber(String phoneNumber);
 }

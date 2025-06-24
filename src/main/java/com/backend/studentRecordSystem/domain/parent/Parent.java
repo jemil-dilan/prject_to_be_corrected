@@ -1,5 +1,6 @@
-package com.backend.studentRecordSystem.domain;
+package com.backend.studentRecordSystem.domain.parent;
 
+import com.backend.studentRecordSystem.domain.student.Student;
 import com.backend.studentRecordSystem.domain.enums.Relationship;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -8,7 +9,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
