@@ -1,10 +1,10 @@
 package com.backend.studentRecordSystem.service;
 
-import com.backend.studentRecordSystem.domain.Student;
+import com.backend.studentRecordSystem.domain.student.Student;
 import com.backend.studentRecordSystem.dto.student.CreateStudentDTO;
 import com.backend.studentRecordSystem.dto.student.StudentDTO;
 import com.backend.studentRecordSystem.dto.StudentData;
-import com.backend.studentRecordSystem.factory.student.StudentFactory;
+import com.backend.studentRecordSystem.domain.student.StudentFactory;
 import com.backend.studentRecordSystem.mapper.StudentMapper;
 import com.backend.studentRecordSystem.service.student.StudentServiceImpl;
 import org.junit.jupiter.api.Test;

@@ -1,8 +1,10 @@
-package com.backend.studentRecordSystem.domain;
+package com.backend.studentRecordSystem.domain.student;
 
 
+import com.backend.studentRecordSystem.domain.classroom.SchoolClass;
 import com.backend.studentRecordSystem.domain.enums.Gender;
 import com.backend.studentRecordSystem.domain.enums.StudentStatus;
+import com.backend.studentRecordSystem.domain.parent.Parent;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

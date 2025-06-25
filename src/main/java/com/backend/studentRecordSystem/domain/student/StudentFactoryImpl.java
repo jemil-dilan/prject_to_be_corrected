@@ -1,6 +1,5 @@
-package com.backend.studentRecordSystem.factory.student;
+package com.backend.studentRecordSystem.domain.student;
 
-import com.backend.studentRecordSystem.domain.Student;
 import com.backend.studentRecordSystem.dto.StudentData;
 import com.backend.studentRecordSystem.exception.ConflictException;
 import com.backend.studentRecordSystem.exception.ResourceNotFoundException;
@@ -53,6 +52,7 @@ public class StudentFactoryImpl implements  StudentFactory {
         if (studentRepository.existsById(id)){
             studentRepository.save(
                     Student.builder()
+                            .id(id)
                             .firstName(studentData.firstName())
                             .lastName(studentData.lastName())
                             .dateOfBirth(studentData.dateOfBirth())

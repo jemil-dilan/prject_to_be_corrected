@@ -4,99 +4,58 @@ import com.backend.studentRecordSystem.domain.enums.Relationship;
 import com.backend.studentRecordSystem.dto.parent.CreateParentDTO;
 import com.backend.studentRecordSystem.dto.parent.ParentDTO;
 import com.backend.studentRecordSystem.service.parent.ParentService;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.hamcrest.Matchers;
+import io.restassured.http.ContentType;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.http.MediaType;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.List;
 
+import static io.restassured.module.mockmvc.RestAssuredMockMvc.*;
+import static io.restassured.module.mockmvc.RestAssuredMockMvc.mockMvc;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.Mockito.*;
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+@WebMvcTest(ParentController.class)
 @ExtendWith(MockitoExtension.class)
-@WebMvcTest(controllers = ParentController.class)
 class ParentControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
-    @Autowired
-    private ObjectMapper objectMapper;
-
     @MockitoBean
     private ParentService parentService;
-    private final String BASE_URL = "/parents";
 
-    @Test
-    void getAllParentsTest() throws Exception{
 
-        ParentDTO parentDTO = mock();
-        ParentDTO parentDTO1 = mock();
-        ParentDTO parentDTO2 = mock();
-
-        when(parentService.getAllParents())
-                .thenReturn(List.of(parentDTO, parentDTO1, parentDTO2));
-
-        mockMvc.perform(get(BASE_URL).accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$", Matchers.hasSize(3)));
-
-        verify(parentService, times(1)).getAllParents();
+    @BeforeEach
+    void setup() {
+        mockMvc(mockMvc);
     }
 
     @Test
-    void getParentsByIDTest() throws Exception {
+    public void getAllParentTest(){
+        ParentDTO parentDTO = mock(ParentDTO.class);
+        ParentDTO parentDTO1 = mock(ParentDTO.class);
+        ParentDTO parentDTO2 = mock(ParentDTO.class);
 
-        Long parentId = 1L;
-        ParentDTO parentDTO = new ParentDTO(
-                1L,"John", "Doe", "123456789", "123 Main St",
-                Relationship.FATHER, "987654321", "john@example.com", "Engineer"
-        );
-        when(parentService.getParentById(parentId)).thenReturn(parentDTO);
+        when(parentService.getAllParents()).thenReturn(List.of(parentDTO, parentDTO1, parentDTO2));
 
-        mockMvc.perform(get(BASE_URL + "/1").accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.id").value(parentDTO.id()))
-                .andExpect(jsonPath("$.firstName").value(parentDTO.firstName()))
-                .andExpect(jsonPath("$.lastName").value(parentDTO.lastName()))
-                .andExpect(jsonPath("$.email").value(parentDTO.email()))
-                .andExpect(jsonPath("$.phoneNumber").value(parentDTO.phoneNumber()))
-                .andExpect(jsonPath("$.address").value(parentDTO.address()))
-                .andExpect(jsonPath("$.relationship").value(parentDTO.relationship().toString()))
-                .andExpect(jsonPath("$.occupation").value(parentDTO.occupation()))
-                .andExpect(jsonPath("$.alternativeContact").value(parentDTO.alternativeContact()));
+            when()
+                .get("/parents")
+                .then()
+                .statusCode(200)
+                .contentType(ContentType.JSON).body("$",hasSize(3));
 
-        verify(parentService).getParentById(parentId);
+            verify(parentService, times(1)).getAllParents();
     }
 
     @Test
-    void deleteParentTest() throws Exception {
-        Long parentId = 2L;
-
-        doNothing().when(parentService).deleteParent(parentId);
-
-        mockMvc.perform(delete(BASE_URL + "/2").accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isNoContent());
-
-        verify(parentService, times(1)).deleteParent(parentId);
-    }
-
-    @Test
-    void createParentTest() throws Exception {
+    public void createParentTest(){
         CreateParentDTO createParentDTO = new CreateParentDTO(
                 "John", "Doe", "123456789", "123 Main St",
                 Relationship.FATHER, "987654321", "john@example.com", "Engineer"
@@ -116,40 +75,86 @@ class ParentControllerTest {
 
         when(parentService.createParent(createParentDTO)).thenReturn(parentDTO);
 
-        mockMvc.perform(post(BASE_URL)
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(createParentDTO)))
-                .andExpect(status().isCreated())
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.id").value(parentDTO.id()))
-                .andExpect(jsonPath("$.firstName").value(parentDTO.firstName()))
-                .andExpect(jsonPath("$.lastName").value(parentDTO.lastName()))
-                .andExpect(jsonPath("$.email").value(parentDTO.email()))
-                .andExpect(jsonPath("$.phoneNumber").value(parentDTO.phoneNumber()))
-                .andExpect(jsonPath("$.address").value(parentDTO.address()))
-                .andExpect(jsonPath("$.relationship").value(parentDTO.relationship().toString()))
-                .andExpect(jsonPath("$.occupation").value(parentDTO.occupation()))
-                .andExpect(jsonPath("$.alternativeContact").value(parentDTO.alternativeContact()));
+        given()
+                    .contentType(ContentType.JSON)
+                    .body(createParentDTO)
+                .when()
+                    .post("/parents")
+                .then()
+                    .statusCode(201)
+                    .contentType(ContentType.JSON)
+                    .body("id", equalTo(parentDTO.id().intValue()))
+                    .body("firstName", equalTo(parentDTO.firstName()))
+                    .body("lastName", equalTo(parentDTO.lastName()))
+                    .body("phoneNumber", equalTo(parentDTO.phoneNumber()))
+                    .body("address", equalTo(parentDTO.address()))
+                    .body("relationship", equalTo(parentDTO.relationship().toString()))
+                    .body("alternativeContact", equalTo(parentDTO.alternativeContact()))
+                    .body("email", equalTo(parentDTO.email()))
+                    .body("occupation", equalTo(parentDTO.occupation()));
 
-        verify(parentService).createParent(createParentDTO);
+        verify(parentService, times(1)).createParent(createParentDTO);
     }
 
     @Test
-    void updateParentTest() throws Exception {
-        Long parentId = 2L;
+    public void getParentByIdTest(){
+        ParentDTO parentDTO = new ParentDTO(
+                1L,"John", "Doe", "123456789", "123 Main St",
+                Relationship.FATHER, "987654321", "john@example.com", "Engineer"
+        );
+
+        when(parentService.getParentById(parentDTO.id())).thenReturn(parentDTO);
+
+                when()
+                .get("/parents/{id}", 1L)
+                .then()
+                .statusCode(200)
+                .contentType(ContentType.JSON)
+                .body("id", equalTo(parentDTO.id().intValue()))
+                .body("firstName", equalTo(parentDTO.firstName()))
+                .body("lastName", equalTo(parentDTO.lastName()))
+                .body("phoneNumber", equalTo(parentDTO.phoneNumber()))
+                .body("address", equalTo(parentDTO.address()))
+                .body("relationship", equalTo(parentDTO.relationship().toString()))
+                .body("alternativeContact", equalTo(parentDTO.alternativeContact()))
+                .body("email", equalTo(parentDTO.email()))
+                .body("occupation", equalTo(parentDTO.occupation()));
+
+        verify(parentService, times(1)).getParentById(parentDTO.id());
+    }
+
+    @Test
+    public void updateParentTest(){
+        long parentId = 1L;
         CreateParentDTO createParentDTO = new CreateParentDTO(
                 "John", "Doe", "123456789", "123 Main St",
                 Relationship.FATHER, "987654321", "john@example.com", "Engineer"
         );
 
-
         doNothing().when(parentService).updateParent(parentId, createParentDTO);
 
-        mockMvc.perform(put(BASE_URL + "/2")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(createParentDTO)))
-                .andExpect(status().isNoContent());
+        given()
+                .contentType(ContentType.JSON)
+                .body(createParentDTO)
+                .when()
+                .put("/parents/{id}", parentId)
+                .then()
+                .statusCode(204);
 
-        verify(parentService).updateParent(parentId,createParentDTO);
+        verify(parentService, times(1)).updateParent(parentId, createParentDTO);
+    }
+
+    @Test
+    public void deleteParentTest(){
+        long parentId = 1L;
+
+        doNothing().when(parentService).deleteParent(parentId);
+
+        when()
+                .delete("/parents/{id}", parentId)
+                .then()
+                .statusCode(204);
+
+        verify(parentService, times(1)).deleteParent(parentId);
     }
 }

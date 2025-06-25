@@ -1,6 +1,6 @@
 package com.backend.studentRecordSystem.mapper;
 
-import com.backend.studentRecordSystem.domain.Parent;
+import com.backend.studentRecordSystem.domain.parent.Parent;
 import com.backend.studentRecordSystem.domain.enums.Relationship;
 import com.backend.studentRecordSystem.dto.ParentData;
 import com.backend.studentRecordSystem.dto.parent.CreateParentDTO;
@@ -11,7 +11,6 @@ import org.mapstruct.factory.Mappers;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
 class ParentMapperTest {

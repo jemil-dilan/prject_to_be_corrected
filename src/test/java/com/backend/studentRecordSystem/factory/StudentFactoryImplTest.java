@@ -1,8 +1,8 @@
 package com.backend.studentRecordSystem.factory;
 
-import com.backend.studentRecordSystem.domain.Student;
+import com.backend.studentRecordSystem.domain.student.Student;
 import com.backend.studentRecordSystem.dto.StudentData;
-import com.backend.studentRecordSystem.factory.student.StudentFactoryImpl;
+import com.backend.studentRecordSystem.domain.student.StudentFactoryImpl;
 import com.backend.studentRecordSystem.repository.StudentRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -18,7 +18,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-class StudentFactoryImplTest {
+class   StudentFactoryImplTest {
     @Mock
     private StudentRepository studentRepository;
 
@@ -89,7 +89,7 @@ class StudentFactoryImplTest {
     }
 
     @Test
-    void updateStudent() {
+    void updateStudentTest() {
         UUID studentId = UUID.fromString("605057e5-dfe3-4c4e-aebe-cde8209604ff");
         Student student = mock();
         StudentData studentData = mock();
@@ -101,7 +101,7 @@ class StudentFactoryImplTest {
     }
 
     @Test
-    void deleteStudent() {
+    void deleteStudentTest() {
         UUID studentId = UUID.fromString("605057e5-dfe3-4c4e-aebe-cde8209604ff");
 
         doNothing().when(studentRepository).deleteById(studentId);

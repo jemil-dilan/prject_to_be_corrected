@@ -2,7 +2,7 @@ package com.backend.studentRecordSystem.service.student;
 
 import com.backend.studentRecordSystem.dto.student.CreateStudentDTO;
 import com.backend.studentRecordSystem.dto.student.StudentDTO;
-import com.backend.studentRecordSystem.factory.student.StudentFactory;
+import com.backend.studentRecordSystem.domain.student.StudentFactory;
 import com.backend.studentRecordSystem.mapper.StudentMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

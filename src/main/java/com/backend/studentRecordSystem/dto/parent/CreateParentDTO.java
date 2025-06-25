@@ -1,12 +1,13 @@
 package com.backend.studentRecordSystem.dto.parent;
 
 import com.backend.studentRecordSystem.domain.enums.Relationship;
+import com.backend.studentRecordSystem.domain.parent.Parent;
 import lombok.Builder;
 
 import java.io.Serializable;
 
 /**
- * DTO for {@link com.backend.studentRecordSystem.domain.Parent}
+ * DTO for {@link Parent}
  */
 
 @Builder

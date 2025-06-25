@@ -3,7 +3,7 @@ package com.backend.studentRecordSystem.service.classroom;
 import com.backend.studentRecordSystem.domain.enums.ClassNames;
 import com.backend.studentRecordSystem.dto.classroom.CreateSchoolClassDTO;
 import com.backend.studentRecordSystem.dto.classroom.SchoolClassSummaryDTO;
-import com.backend.studentRecordSystem.factory.classroom.SchoolClassFactory;
+import com.backend.studentRecordSystem.domain.classroom.SchoolClassFactory;
 import com.backend.studentRecordSystem.mapper.SchoolClassMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

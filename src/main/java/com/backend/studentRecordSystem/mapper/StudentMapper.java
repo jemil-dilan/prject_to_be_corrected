@@ -1,7 +1,7 @@
 package com.backend.studentRecordSystem.mapper;
 
-import com.backend.studentRecordSystem.domain.Parent;
-import com.backend.studentRecordSystem.domain.Student;
+import com.backend.studentRecordSystem.domain.parent.Parent;
+import com.backend.studentRecordSystem.domain.student.Student;
 import com.backend.studentRecordSystem.dto.student.CreateStudentDTO;
 import com.backend.studentRecordSystem.dto.student.StudentDTO;
 import com.backend.studentRecordSystem.dto.StudentData;

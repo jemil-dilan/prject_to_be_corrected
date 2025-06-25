@@ -1,6 +1,5 @@
-package com.backend.studentRecordSystem.factory.classroom;
+package com.backend.studentRecordSystem.domain.classroom;
 
-import com.backend.studentRecordSystem.domain.SchoolClass;
 import com.backend.studentRecordSystem.domain.enums.ClassNames;
 import com.backend.studentRecordSystem.dto.ClassroomData;
 import com.backend.studentRecordSystem.repository.SchoolClassRepository;

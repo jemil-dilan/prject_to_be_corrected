@@ -1,6 +1,6 @@
 package com.backend.studentRecordSystem.mapper;
 
-import com.backend.studentRecordSystem.domain.Student;
+import com.backend.studentRecordSystem.domain.student.Student;
 import com.backend.studentRecordSystem.domain.enums.Gender;
 import com.backend.studentRecordSystem.domain.enums.StudentStatus;
 import com.backend.studentRecordSystem.dto.StudentData;

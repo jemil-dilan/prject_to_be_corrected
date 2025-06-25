@@ -1,8 +1,8 @@
 package com.backend.studentRecordSystem.factory;
 
-import com.backend.studentRecordSystem.domain.Parent;
+import com.backend.studentRecordSystem.domain.parent.Parent;
 import com.backend.studentRecordSystem.dto.ParentData;
-import com.backend.studentRecordSystem.factory.parent.ParentFactoryImpl;
+import com.backend.studentRecordSystem.domain.parent.ParentFactoryImpl;
 import com.backend.studentRecordSystem.repository.ParentRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -27,7 +27,7 @@ class ParentFactoryImplTest {
     private ParentFactoryImpl objectUnderTest;
 
     @Test
-    void createParent() {
+    void createParentTest() {
 
         ParentData parentData = mock(ParentData.class);
         Parent parent = Parent.builder()
@@ -45,7 +45,7 @@ class ParentFactoryImplTest {
         when(parentRepository.existsByPhoneNumber(parentData.phoneNumber())).thenReturn(false);
         when(parentRepository.save(any(Parent.class))).thenReturn(parent);
 
-        Parent resultUnderTest = objectUnderTest.createStudent(parentData);
+        Parent resultUnderTest = objectUnderTest.createParent(parentData);
 
         assertThat(resultUnderTest)
                 .usingRecursiveComparison()
@@ -53,7 +53,7 @@ class ParentFactoryImplTest {
     }
 
     @Test
-    void getAllParents() {
+    void getAllParentsTest() {
 
         Parent parent = mock(Parent.class);
         Parent parent1 = mock(Parent.class);
@@ -61,7 +61,7 @@ class ParentFactoryImplTest {
 
         when(parentRepository.findAll()).thenReturn(List.of(parent, parent1, parent2));
 
-        List<Parent> resultUnderTest = objectUnderTest.getAllStudents();
+        List<Parent> resultUnderTest = objectUnderTest.getAllParents();
 
         assertThat(resultUnderTest)
                 .hasSize(3)
@@ -71,14 +71,14 @@ class ParentFactoryImplTest {
     }
 
     @Test
-    void getParentById() {
+    void getParentByIdTest() {
 
         long parentId = 1L;
         Parent parent = mock(Parent.class);
 
         when(parentRepository.findById(parentId)).thenReturn(Optional.of(parent));
 
-        Parent resultUnderTest = objectUnderTest.getStudentById(parentId);
+        Parent resultUnderTest = objectUnderTest.getParentById(parentId);
 
         assertThat(resultUnderTest)
                 .usingRecursiveComparison()
@@ -86,7 +86,7 @@ class ParentFactoryImplTest {
     }
 
     @Test
-    void updateParent() {
+    void updateParentTest() {
 
         long parentId = 1L;
         ParentData parentData = mock(ParentData.class);
@@ -95,7 +95,7 @@ class ParentFactoryImplTest {
         when(parentRepository.existsById(parentId)).thenReturn(true);
         when(parentRepository.save(any(Parent.class))).thenReturn(parent);
 
-        objectUnderTest.updateStudent(parentId, parentData);
+        objectUnderTest.updateParent(parentId, parentData);
 
         assertThat(parent)
                 .usingRecursiveComparison()
@@ -115,11 +115,11 @@ class ParentFactoryImplTest {
     }
 
     @Test
-    void deleteParent() {
+    void deleteParentTest() {
 
         long parentId = 1L;
 
-        objectUnderTest.deleteStudent(parentId);
+        objectUnderTest.deleteParent(parentId);
 
         assertThat(parentRepository.existsById(parentId)).isFalse();
     }
