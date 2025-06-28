@@ -1,5 +1,6 @@
 package com.backend.studentRecordSystem.domain;
 
+import com.backend.studentRecordSystem.domain.staff.Staff;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

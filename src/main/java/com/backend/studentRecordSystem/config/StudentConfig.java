@@ -3,8 +3,8 @@ package com.backend.studentRecordSystem.config;
 import com.backend.studentRecordSystem.domain.student.StudentFactory;
 import com.backend.studentRecordSystem.domain.student.StudentFactoryImpl;
 import com.backend.studentRecordSystem.repository.StudentJpaRepository;
-import com.backend.studentRecordSystem.repository.StudentRepository;
-import com.backend.studentRecordSystem.repository.StudentRepositoryImpl;
+import com.backend.studentRecordSystem.domain.student.StudentRepository;
+import com.backend.studentRecordSystem.domain.student.StudentRepositoryImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

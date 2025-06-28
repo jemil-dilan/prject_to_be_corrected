@@ -1,4 +1,4 @@
-package com.backend.studentRecordSystem.domain;
+package com.backend.studentRecordSystem.domain.staff;
 
 import com.backend.studentRecordSystem.domain.enums.Gender;
 import com.backend.studentRecordSystem.domain.enums.StaffRole;
@@ -31,15 +31,15 @@ public class Staff {
     @Column(name = "c_staff_last_name", nullable = false)
     private String lastName;
     @Column(name = "c_staff_phone_number", nullable = false)
-    private String phone_Number;
+    private String phoneNumber;
     @Column(name = "c_staff_email", unique = true)
     private String email;
     @Column(name = "c_staff_addrss", nullable = false)
     private String address;
     @Column(name = "STAFF_DATE_OF_BIRTH")
-    private LocalDate date_Of_Birth;
+    private LocalDate dateOfBirth;
     @Column(name = "STAFF_ID_NUMBER", unique = true)
-    private String id_Number;
+    private String idNumber;
     @Column(name = "STAFF_GENDER")
     @Enumerated(value = EnumType.STRING)
     private Gender gender;
@@ -49,7 +49,8 @@ public class Staff {
     @Column(name = "SALARY")
     private BigDecimal salary;
     @Column(name = "HIRE_DATE")
-    private  LocalDate hire_Date;
+    @Builder.Default
+    private  LocalDate hireDate = LocalDate.now();
     @Column(name = "STAFF_STATUS")
     private StaffStatus status;
 

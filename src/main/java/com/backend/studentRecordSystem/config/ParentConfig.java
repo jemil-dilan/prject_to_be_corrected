@@ -4,8 +4,8 @@ package com.backend.studentRecordSystem.config;
 import com.backend.studentRecordSystem.domain.parent.ParentFactory;
 import com.backend.studentRecordSystem.domain.parent.ParentFactoryImpl;
 import com.backend.studentRecordSystem.repository.ParentJpaRepository;
-import com.backend.studentRecordSystem.repository.ParentRepository;
-import com.backend.studentRecordSystem.repository.ParentRepositoryImpl;
+import com.backend.studentRecordSystem.domain.parent.ParentRepository;
+import com.backend.studentRecordSystem.domain.parent.ParentRepositoryImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

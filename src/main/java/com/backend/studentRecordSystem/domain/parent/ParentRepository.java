@@ -1,11 +1,7 @@
-package com.backend.studentRecordSystem.repository;
-
-import com.backend.studentRecordSystem.domain.parent.Parent;
-import com.backend.studentRecordSystem.domain.student.Student;
+package com.backend.studentRecordSystem.domain.parent;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 //public interface ParentRepository extends SpringRepository<Parent, Long> {
 public interface ParentRepository {

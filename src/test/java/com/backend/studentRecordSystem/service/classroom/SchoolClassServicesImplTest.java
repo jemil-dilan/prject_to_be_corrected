@@ -2,7 +2,7 @@ package com.backend.studentRecordSystem.service.classroom;
 
 import com.backend.studentRecordSystem.domain.classroom.SchoolClass;
 import com.backend.studentRecordSystem.domain.enums.ClassNames;
-import com.backend.studentRecordSystem.dto.ClassroomData;
+import com.backend.studentRecordSystem.domain.classroom.ClassroomData;
 import com.backend.studentRecordSystem.dto.classroom.CreateSchoolClassDTO;
 import com.backend.studentRecordSystem.dto.classroom.SchoolClassSummaryDTO;
 import com.backend.studentRecordSystem.domain.classroom.SchoolClassFactory;

@@ -1,5 +1,6 @@
 package com.backend.studentRecordSystem.domain;
 
+import com.backend.studentRecordSystem.domain.staff.Staff;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
@@ -10,7 +11,7 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @SuperBuilder
 @Table(name = "c_bus_driver")
-public class BusDriver extends Staff{
+public class BusDriver extends Staff {
     @Column(name = "c_driver_license_number", nullable = false)
     private String licenseNumber;
     @OneToOne

@@ -3,7 +3,6 @@ package com.backend.studentRecordSystem.domain.student;
 import com.backend.studentRecordSystem.dto.StudentData;
 import com.backend.studentRecordSystem.exception.ConflictException;
 import com.backend.studentRecordSystem.exception.ResourceNotFoundException;
-import com.backend.studentRecordSystem.repository.StudentRepository;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;

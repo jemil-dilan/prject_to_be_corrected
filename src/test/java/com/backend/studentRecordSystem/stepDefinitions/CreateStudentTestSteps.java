@@ -1,18 +1,10 @@
 package com.backend.studentRecordSystem.stepDefinitions;
 
-import com.backend.studentRecordSystem.domain.enums.Gender;
-import com.backend.studentRecordSystem.domain.enums.StudentStatus;
-import com.backend.studentRecordSystem.dto.student.CreateStudentDTO;
 import com.backend.studentRecordSystem.dto.student.StudentDTO;
 import com.backend.studentRecordSystem.service.student.StudentService;
-import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
-
-import java.time.LocalDate;
-import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -31,7 +23,6 @@ public class CreateStudentTestSteps {
         studentService.clearDatabase();
         assertThat(studentService.getAllStudents()).isEmpty();
     }
-
 
 
     @Then("the student should be created successfully")

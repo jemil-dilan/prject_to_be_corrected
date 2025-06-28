@@ -3,7 +3,7 @@ package com.backend.studentRecordSystem.factory;
 import com.backend.studentRecordSystem.domain.student.Student;
 import com.backend.studentRecordSystem.dto.StudentData;
 import com.backend.studentRecordSystem.domain.student.StudentFactoryImpl;
-import com.backend.studentRecordSystem.repository.StudentRepository;
+import com.backend.studentRecordSystem.domain.student.StudentRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

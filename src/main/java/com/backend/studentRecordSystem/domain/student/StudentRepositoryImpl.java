@@ -1,6 +1,6 @@
-package com.backend.studentRecordSystem.repository;
+package com.backend.studentRecordSystem.domain.student;
 
-import com.backend.studentRecordSystem.domain.student.Student;
+import com.backend.studentRecordSystem.repository.StudentJpaRepository;
 
 import java.util.List;
 import java.util.Optional;

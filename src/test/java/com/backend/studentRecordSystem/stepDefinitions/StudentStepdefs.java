@@ -61,6 +61,7 @@ public class StudentStepdefs implements En {
                 .when()
                 .post(baseURL);
     }
+
     public void theResponseBodyShouldContainTheStudentId() {
         response.then().statusCode(201).body("id", notNullValue());
     }
@@ -92,7 +93,7 @@ public class StudentStepdefs implements En {
         CreateStudentDTO createStudentDTO = CreateStudentDTO.builder().
                 firstName("Pierre").
                 lastName(lastName).
-                dateOfBirth(LocalDate.of(2000,1,1)).
+                dateOfBirth(LocalDate.of(2000, 1, 1)).
                 placeOfBirth("Douala").
                 gender(Gender.MALE).
                 status(StudentStatus.SCHOOLING).
@@ -120,7 +121,7 @@ public class StudentStepdefs implements En {
                 .body("lastName", equalTo(lastName));
     }
 
-    public void iSendAGETRequestToApi (String getEndpoint) {
+    public void iSendAGETRequestToApi(String getEndpoint) {
         response = given()
                 .when()
                 .get(baseURL);
@@ -131,7 +132,7 @@ public class StudentStepdefs implements En {
                 .get(updatedEndpoint);
     }
 
-    public void iSendADELETERequestToApi (String deleteEndpoint){
+    public void iSendADELETERequestToApi(String deleteEndpoint) {
         response = given()
                 .when()
                 .get(baseURL);

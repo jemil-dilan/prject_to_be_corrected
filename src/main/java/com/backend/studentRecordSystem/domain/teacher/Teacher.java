@@ -1,11 +1,10 @@
-package com.backend.studentRecordSystem.domain;
+package com.backend.studentRecordSystem.domain.teacher;
 
+import com.backend.studentRecordSystem.domain.staff.Staff;
 import com.backend.studentRecordSystem.domain.classroom.SchoolClass;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
-
-import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity
@@ -15,8 +14,8 @@ import java.util.List;
 @SuperBuilder
 @Table(name = "t_teachers")
 public class Teacher extends Staff {
-    @Column(name = "c_teacher_certificates")
-    private List<String> certificates;
+//    @Column(name = "c_teacher_certificates")
+//    private List<String> certificates;
     @Column(name = "c_years_of_expression")
     private int yearsOfExperience;
     @OneToOne(mappedBy = "teacher", cascade = CascadeType.ALL)

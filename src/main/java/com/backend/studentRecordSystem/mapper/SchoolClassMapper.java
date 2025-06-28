@@ -2,8 +2,8 @@ package com.backend.studentRecordSystem.mapper;
 
 import com.backend.studentRecordSystem.domain.classroom.SchoolClass;
 import com.backend.studentRecordSystem.domain.student.Student;
-import com.backend.studentRecordSystem.domain.Teacher;
-import com.backend.studentRecordSystem.dto.ClassroomData;
+import com.backend.studentRecordSystem.domain.teacher.Teacher;
+import com.backend.studentRecordSystem.domain.classroom.ClassroomData;
 import com.backend.studentRecordSystem.dto.classroom.CreateSchoolClassDTO;
 import com.backend.studentRecordSystem.dto.classroom.SchoolClassSummaryDTO;
 import org.mapstruct.*;
