@@ -1,11 +1,18 @@
 package com.backend.studentRecordSystem.mapper;
 
-import com.backend.studentRecordSystem.domain.Teacher;
-import com.backend.studentRecordSystem.dto.teacher.TeacherDTO;
+import com.backend.studentRecordSystem.domain.teacher.CreateTeacherRequest;
+import com.backend.studentRecordSystem.domain.teacher.Teacher;
+import com.backend.studentRecordSystem.domain.teacher.TeacherResponse;
+import com.backend.studentRecordSystem.domain.teacher.TeacherData;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
 public interface TeacherMapper {
 
+    @Mapping(target = "assignedClassClassName", source = "assignedClass.className")
+    TeacherResponse toTeacherDTO(Teacher teacher);
 
+    @Mapping(target = "assignedClass", ignore = true)
+    TeacherData toTeacherData(CreateTeacherRequest createTeacherRequest);
 }

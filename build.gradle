@@ -66,3 +66,21 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+//tasks.withType(JavaCompile).configureEach {
+//	options.compilerArgs += [
+//			'--enable-native-access=ALL-UNNAMED'
+//	]
+//}
+
+//bootRun{
+//	jvmArgs = ["--enable-native-access=ALL-UNNAMED"]
+//}
+
+//tasks.withType(JavaExec).configureEach {
+//	jvmArgs += [
+//			"--add-opens", "java.base/java.lang=ALL-UNNAMED",
+//			"--add-opens", "java.base/sun.misc=ALL-UNNAMED",
+//			"--enable-native-access=ALL-UNNAMED"
+//	]
+//}

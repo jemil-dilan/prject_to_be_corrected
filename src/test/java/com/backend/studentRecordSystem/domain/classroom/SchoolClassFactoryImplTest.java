@@ -1,8 +1,7 @@
 package com.backend.studentRecordSystem.domain.classroom;
 
 import com.backend.studentRecordSystem.domain.enums.ClassNames;
-import com.backend.studentRecordSystem.dto.ClassroomData;
-import com.backend.studentRecordSystem.repository.SchoolClassRepository;
+import com.backend.studentRecordSystem.repository.ClassroomSpringRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -18,7 +17,7 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 class SchoolClassFactoryImplTest {
     @Mock
-    private SchoolClassRepository classroomRepository;
+    private ClassroomSpringRepository classroomSpringRepository;
 
     @InjectMocks
     private SchoolClassFactoryImpl objectUnderTest;
@@ -34,8 +33,8 @@ class SchoolClassFactoryImplTest {
                 students(classroomData.students()).
                 build();
 
-        when(classroomRepository.existsByClassName(classroomData.className())).thenReturn(false);
-        when(classroomRepository.save(schoolClass)).thenReturn(schoolClass);
+        when(classroomSpringRepository.existsByClassName(classroomData.className())).thenReturn(false);
+        when(classroomSpringRepository.save(schoolClass)).thenReturn(schoolClass);
 
         SchoolClass resultUnderTest = objectUnderTest.createClassroom(classroomData);
 
@@ -52,7 +51,7 @@ class SchoolClassFactoryImplTest {
         SchoolClass schoolClass1 = mock(SchoolClass.class);
         SchoolClass schoolClass2 = mock(SchoolClass.class);
 
-        when(classroomRepository.findAll()).thenReturn(List.of(schoolClass,schoolClass1 ,schoolClass2));
+        when(classroomSpringRepository.findAll()).thenReturn(List.of(schoolClass,schoolClass1 ,schoolClass2));
 
         List<SchoolClass> resultUnderTest= objectUnderTest.getAllClassrooms();
 
@@ -68,7 +67,7 @@ class SchoolClassFactoryImplTest {
         long classRoomId = 1L;
         SchoolClass schoolClass = mock(SchoolClass.class);
 
-        when(classroomRepository.findById(classRoomId)).thenReturn(Optional.of(schoolClass));
+        when(classroomSpringRepository.findById(classRoomId)).thenReturn(Optional.of(schoolClass));
 
         SchoolClass resultUnderTest = objectUnderTest.getClassroomById(classRoomId);
 
@@ -83,7 +82,7 @@ class SchoolClassFactoryImplTest {
         ClassNames className = ClassNames.CLASS_1;
         SchoolClass schoolClass = mock(SchoolClass.class);
 
-        when(classroomRepository.findByClassName(className)).
+        when(classroomSpringRepository.findByClassName(className)).
                 thenReturn(Optional.of(schoolClass));
 
         SchoolClass resultUnderTest = objectUnderTest.getClassroomByName(className);
@@ -99,6 +98,7 @@ class SchoolClassFactoryImplTest {
         long classroomId = 1L;
         ClassroomData classroomData = mock(ClassroomData.class);
         SchoolClass schoolClass = SchoolClass.builder().
+                id(classroomId).
                 className(classroomData.className()).
                 academicYear(classroomData.academicYear()).
                 section(classroomData.section()).
@@ -106,13 +106,13 @@ class SchoolClassFactoryImplTest {
                 students(classroomData.students()).
                 build();
 
-        when(classroomRepository.existsById(classroomId)).thenReturn(true);
-        when(classroomRepository.save(schoolClass)).thenReturn(schoolClass);
+        when(classroomSpringRepository.existsById(classroomId)).thenReturn(true);
+        when(classroomSpringRepository.save(schoolClass)).thenReturn(schoolClass);
 
         objectUnderTest.updateClassroom(classroomId, classroomData);
 
-        verify(classroomRepository, times(1)).existsById(classroomId);
-        verify(classroomRepository,times(1)).save(schoolClass);
+        verify(classroomSpringRepository, times(1)).existsById(classroomId);
+        verify(classroomSpringRepository,times(1)).save(schoolClass);
     }
 
     @Test
@@ -120,10 +120,10 @@ class SchoolClassFactoryImplTest {
 
         long classroomId = 1L;
 
-        doNothing().when(classroomRepository).deleteById(classroomId);
+        doNothing().when(classroomSpringRepository).deleteById(classroomId);
 
         objectUnderTest.deleteClassroom(classroomId);
 
-        verify(classroomRepository, times(1)).deleteById(classroomId);
+        verify(classroomSpringRepository, times(1)).deleteById(classroomId);
     }
 }

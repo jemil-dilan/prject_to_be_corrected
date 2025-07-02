@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.29.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1751163539562-1" author="jemil-dilan">
+        <createTable tableName="t_teachers">
+            <column name="c_staff_id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_t_teachers"/>
+            </column>
+            <column name="c_staff_first_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="c_staff_last_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="c_staff_phone_number" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="c_staff_email" type="VARCHAR(255)"/>
+            <column name="c_staff_addrss" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="staff_date_of_birth" type="DATE"/>
+            <column name="staff_id_number" type="VARCHAR(255)"/>
+            <column name="staff_gender" type="VARCHAR(255)"/>
+            <column name="staff_role" type="VARCHAR(255)"/>
+            <column name="salary" type="DECIMAL"/>
+            <column name="hire_date" type="DATE"/>
+            <column name="staff_status" type="SMALLINT"/>
+            <column name="c_years_of_expression" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1751163539562-2" author="jemil-dilan">
+        <addUniqueConstraint columnNames="c_staff_email" constraintName="uc_t_teachers_c_staff_email"
+                             tableName="t_teachers"/>
+    </changeSet>
+    <changeSet id="1751163539562-3" author="jemil-dilan">
+        <addUniqueConstraint columnNames="staff_id_number" constraintName="uc_t_teachers_staff_id_number"
+                             tableName="t_teachers"/>
+    </changeSet>
+
+</databaseChangeLog>

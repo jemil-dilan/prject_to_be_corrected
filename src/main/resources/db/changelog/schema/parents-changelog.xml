@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.29.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1751163832631-1" author="jemil-dilan">
+        <createTable tableName="t_parents">
+            <column autoIncrement="true" name="c_parent_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_t_parents"/>
+            </column>
+            <column name="c_parent_first_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="c_parent_last_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="c_phone_number" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="c_parent_address" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="c_relationship_with_student" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="c_alternative_contact" type="VARCHAR(255)"/>
+            <column name="c_parent_email" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="c_parent_occupation" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1751163832631-2" author="jemil-dilan">
+        <addUniqueConstraint columnNames="c_parent_email" constraintName="uc_t_parents_c_parent_email"
+                             tableName="t_parents"/>
+    </changeSet>
+    <changeSet id="1751163832631-3" author="jemil-dilan">
+        <addUniqueConstraint columnNames="c_phone_number" constraintName="uc_t_parents_c_phone_number"
+                             tableName="t_parents"/>
+    </changeSet>
+
+</databaseChangeLog>

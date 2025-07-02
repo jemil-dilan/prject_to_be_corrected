@@ -5,15 +5,13 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
 
-    <include file="db/schemas/parents-changelog.xml"/>
-    <include file="db/schemas/teacher-changelog.xml"/>
-    <include file="db/schemas/class-changelog.xml"/>
-    <include file="db/changelog/2025/06/student-changelog.xml"/>
-    <include file="db/schemas/modified_teachers-changelog.xml"/>
-    <include file="db/changelog/2025/06/modified_class-changelog.xml"/>
-    <include file="db/changelog/2025/06/modified-clases-changelog.xml"/>
-    <include file="db/changelog/2025/06/modified-changelog.xml"/>
-    <include file="db/changelog/2025/06/added-section-in-classroom-changelog.xml"/>
-    <include file="db/changelog/2025/06/modified-className-changelog.xml"/>
-    <include file="db/changelog/2025/06/modified-staff-changelog.xml"/>
+    <include file="db/changelog/schema/staff-changelog.xml"/>
+    <include file="db/changelog/schema/fees-changelog.xml"/>
+    <include file="db/changelog/schema/bus-changelog.xml"/>
+    <include file="db/changelog/schema/driver-changelog.xml"/>
+    <include file="db/changelog/schema/teacher-changelog.xml"/>
+    <include file="db/changelog/schema/classroom-changelog.xml"/>
+    <include file="db/changelog/schema/parents-changelog.xml"/>
+    <include file="db/changelog/schema/student-changelog.xml"/>
+    <include file="/db/changelog/schema/attendance-changelog.xml"/>
 </databaseChangeLog>

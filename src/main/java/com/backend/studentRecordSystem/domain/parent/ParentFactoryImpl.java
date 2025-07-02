@@ -3,7 +3,6 @@ package com.backend.studentRecordSystem.domain.parent;
 import com.backend.studentRecordSystem.dto.ParentData;
 import com.backend.studentRecordSystem.exception.ConflictException;
 import com.backend.studentRecordSystem.exception.ResourceNotFoundException;
-import com.backend.studentRecordSystem.repository.ParentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;
 
