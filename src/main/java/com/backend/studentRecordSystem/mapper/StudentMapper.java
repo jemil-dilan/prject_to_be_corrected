@@ -28,9 +28,9 @@ public interface StudentMapper {
                 .collect(Collectors.toSet());
     }
 
-    @Mapping(target = "updatedDate", ignore = true)
-    Student toEntity(StudentDTO studentDTO);
-
-    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    Student partialUpdate(StudentDTO studentDTO, @MappingTarget Student student);
+//    @Mapping(target = "updatedDate", ignore = true)
+//    Student toEntity(StudentDTO studentDTO);
+//
+//    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+//    Student partialUpdate(StudentDTO studentDTO, @MappingTarget Student student);
 }

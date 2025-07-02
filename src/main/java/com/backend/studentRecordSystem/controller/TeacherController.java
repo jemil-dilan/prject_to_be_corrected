@@ -6,19 +6,24 @@ import com.backend.studentRecordSystem.service.teacher.TeacherService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/teachers")
-@RequiredArgsConstructor
 public class TeacherController {
     private final TeacherService teacherService;
+
+    public TeacherController(TeacherService teacherService) {
+        this.teacherService = teacherService;
+    }
 
     @PostMapping
     public ResponseEntity<TeacherResponse> createTeacher(@RequestBody CreateTeacherRequest createTeacherRequest){
         return ResponseEntity.status(HttpStatus.CREATED).body(teacherService.createTeacher(createTeacherRequest));
+    }
+
+    @GetMapping("/email/{email}")
+    public ResponseEntity<TeacherResponse> getTeacherByEmail(@PathVariable String email){
+        return ResponseEntity.ok(teacherService.getTeacherByEmail(email));
     }
 }

@@ -9,10 +9,6 @@ import org.springframework.context.ApplicationContext;
 public class StudentRecordSystemApplication {
 
 	public static void main(String[] args) {
-		ApplicationContext context = SpringApplication.run(StudentRecordSystemApplication.class, args);
-
-		var notificationManager = context.getBean(NotificationManager.class);
-
-		notificationManager.sendNotification("hello");
+		SpringApplication.run(StudentRecordSystemApplication.class, args);
 	}
 }

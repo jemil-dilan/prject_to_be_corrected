@@ -5,4 +5,6 @@ import com.backend.studentRecordSystem.domain.teacher.TeacherResponse;
 
 public interface TeacherService {
     TeacherResponse createTeacher(CreateTeacherRequest createTeacherRequest);
+
+    TeacherResponse getTeacherByEmail(String email);
 }

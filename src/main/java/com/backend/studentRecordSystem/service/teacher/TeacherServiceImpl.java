@@ -21,4 +21,9 @@ public class TeacherServiceImpl implements TeacherService {
                 )
         );
     }
+
+    @Override
+    public TeacherResponse getTeacherByEmail(String email) {
+        return teacherMapper.toTeacherDTO(teacherFactory.getTeacherByEmail(email));
+    }
 }

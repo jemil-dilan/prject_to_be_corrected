@@ -8,6 +8,7 @@ import io.cucumber.datatable.DataTable;
 import io.cucumber.java8.En;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
@@ -21,14 +22,15 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertTrue;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
+        properties = "spring.liquibase.enabled=false")
 public class TeacherStepDefs implements En {
+    @LocalServerPort
+    private int port;
     private final TeacherRepository teacherRepository;
 
     private CreateTeacherRequest createTeacherRequest;
     private Response response;
-    @LocalServerPort
-    private int port;
 
     @BeforeEach
     void setup() {
@@ -103,7 +105,7 @@ public class TeacherStepDefs implements En {
                     .get(modifiedEndpoint);
         });
         And("a teacher exists with email {string}", (String email) -> {
-            boolean exists = teacherRepository.existsByEmail(createTeacherRequest.email());
+            boolean exists = teacherRepository.existsByEmail(email);
             assertTrue(exists);
         });
         And("sends a request to {string} to update the teacher", (String endpoint) -> {

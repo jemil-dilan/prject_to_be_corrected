@@ -8,6 +8,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.Optional;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -64,6 +66,16 @@ class TeacherFactoryImplTest {
 
     @Test
     void getTeacherByEmailTest() {
+        Teacher teacher = mock(Teacher.class);
+        String teacherEmail = "example@go.com";
+
+        when(teacherRepository.findByEmail(teacherEmail)).thenReturn(Optional.of(teacher));
+
+        Teacher resultUnderTest = objectUnderTest.getTeacherByEmail(teacherEmail);
+
+        assertThat(resultUnderTest)
+                .usingRecursiveComparison()
+                .isEqualTo(teacher);
     }
 
     @Test

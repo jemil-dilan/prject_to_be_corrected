@@ -5,7 +5,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.29.xsd"
         objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
-    <changeSet id="1749491076423-1" author="jemil-dilan">
+    <changeSet id="1751163642032-1" author="jemil-dilan">
         <createTable tableName="student_parent">
             <column name="c_parent_id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_student_parent"/>
@@ -15,7 +15,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet id="1749491076423-2" author="jemil-dilan">
+    <changeSet id="1751163642032-2" author="jemil-dilan">
         <createTable tableName="t_students">
             <column name="c_student_id" type="UUID">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_t_students"/>
@@ -31,17 +31,17 @@
             <column name="c_class_id" type="BIGINT"/>
         </createTable>
     </changeSet>
-    <changeSet id="1749491076423-3" author="jemil-dilan">
+    <changeSet id="1751163642032-3" author="jemil-dilan">
         <addForeignKeyConstraint baseColumnNames="c_class_id" baseTableName="t_students"
                                  constraintName="FK_T_STUDENTS_ON_C_CLASS" referencedColumnNames="c_class_id"
                                  referencedTableName="t_class"/>
     </changeSet>
-    <changeSet id="1749491076423-4" author="jemil-dilan">
+    <changeSet id="1751163642032-4" author="jemil-dilan">
         <addForeignKeyConstraint baseColumnNames="c_parent_id" baseTableName="student_parent"
                                  constraintName="fk_stupar_on_parent" referencedColumnNames="c_parent_id"
                                  referencedTableName="t_parents"/>
     </changeSet>
-    <changeSet id="1749491076423-5" author="jemil-dilan">
+    <changeSet id="1751163642032-5" author="jemil-dilan">
         <addForeignKeyConstraint baseColumnNames="c_student_id" baseTableName="student_parent"
                                  constraintName="fk_stupar_on_student" referencedColumnNames="c_student_id"
                                  referencedTableName="t_students"/>

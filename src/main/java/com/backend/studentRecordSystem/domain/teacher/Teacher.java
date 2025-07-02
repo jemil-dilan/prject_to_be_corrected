@@ -17,7 +17,7 @@ public class Teacher extends Staff {
 //    @Column(name = "c_teacher_certificates")
 //    private List<String> certificates;
     @Column(name = "c_years_of_expression")
-    private int yearsOfExperience;
+    private Integer yearsOfExperience;
     @OneToOne(mappedBy = "teacher", cascade = CascadeType.ALL)
     private SchoolClass assignedClass;
 }

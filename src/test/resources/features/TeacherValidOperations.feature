@@ -3,7 +3,7 @@ Feature: Teacher Operations
   Scenario: create a new Teacher successfully
     Given the client is connected to the API
     When the client provide valid teacher details:
-      | firstname | lastname | phoneNumber | email         | address        | dateOfBirth | idNumber     | gender | salary | status | yearsOfExperience | assignedClassId |
+      | firstName | lastName | phoneNumber | email         | address        | dateOfBirth | idNumber     | gender | salary | status | yearsOfExperience | assignedClassId |
       | Job       | Ngassa   | 12345678    | zoo@email.com | bonaberi_ndobo | 1990-01-03  | lt21a1104e52 | MALE   | 500000 | ACTIVE | 5                 | 1               |
     And sends a request to "/teachers" to create a new teacher
     Then the response status should return 201

@@ -41,4 +41,20 @@ class TeacherServiceImplTest {
                 .isEqualTo(teacherResponse);
     }
 
+    @Test
+    void getTeacherByEmail(){
+        String teacherEmail = "email@yo.com";
+        Teacher teacher = mock(Teacher.class);
+        TeacherResponse teacherResponse = mock(TeacherResponse.class);
+
+        when(teacherFactory.getTeacherByEmail(teacherEmail)).thenReturn(teacher);
+        when(teacherMapper.toTeacherDTO(teacher)).thenReturn(teacherResponse);
+
+        TeacherResponse resultUnderTest = objectUnderTest.getTeacherByEmail(teacherEmail);
+
+        assertThat(resultUnderTest)
+                .usingRecursiveComparison()
+                .isEqualTo(teacherResponse);
+    }
+
 }

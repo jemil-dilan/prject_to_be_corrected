@@ -52,6 +52,7 @@ public class Staff {
     @Builder.Default
     private  LocalDate hireDate = LocalDate.now();
     @Column(name = "STAFF_STATUS")
+    @Enumerated(value = EnumType.STRING)
     private StaffStatus status;
 
 }

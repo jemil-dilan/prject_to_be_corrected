@@ -5,19 +5,10 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.29.xsd"
         objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
-    <changeSet id="1749574463043-2" author="jemil-dilan">
-        <dropForeignKeyConstraint baseTableName="t_teachers" constraintName="fk_t_teachers_on_c_class"/>
-    </changeSet>
-    <changeSet id="1749574463043-1" author="jemil-dilan">
-        <createSequence incrementBy="50" sequenceName="t_teachers_seq" startValue="1"/>
-    </changeSet>
-    <changeSet id="1749574463043-4" author="jemil-dilan">
-        <dropColumn columnName="c_class_id" tableName="t_teachers"/>
-    </changeSet>
-    <changeSet id="1749663472965-1" author="jemil-dilan">
-        <createTable tableName="t_staff">
-            <column autoIncrement="true" name="c_staff_id" type="BIGINT">
-                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_t_staff"/>
+    <changeSet id="1751163539562-1" author="jemil-dilan">
+        <createTable tableName="t_teachers">
+            <column name="c_staff_id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_t_teachers"/>
             </column>
             <column name="c_staff_first_name" type="VARCHAR(255)">
                 <constraints nullable="false"/>
@@ -39,14 +30,16 @@
             <column name="salary" type="DECIMAL"/>
             <column name="hire_date" type="DATE"/>
             <column name="staff_status" type="SMALLINT"/>
+            <column name="c_years_of_expression" type="INT"/>
         </createTable>
     </changeSet>
-    <changeSet id="1749663472965-2" author="jemil-dilan">
-        <addUniqueConstraint columnNames="c_staff_email" constraintName="uc_t_staff_c_staff_email" tableName="t_staff"/>
+    <changeSet id="1751163539562-2" author="jemil-dilan">
+        <addUniqueConstraint columnNames="c_staff_email" constraintName="uc_t_teachers_c_staff_email"
+                             tableName="t_teachers"/>
     </changeSet>
-    <changeSet id="1749663472965-3" author="jemil-dilan">
-        <addUniqueConstraint columnNames="staff_id_number" constraintName="uc_t_staff_staff_id_number"
-                             tableName="t_staff"/>
+    <changeSet id="1751163539562-3" author="jemil-dilan">
+        <addUniqueConstraint columnNames="staff_id_number" constraintName="uc_t_teachers_staff_id_number"
+                             tableName="t_teachers"/>
     </changeSet>
 
 </databaseChangeLog>

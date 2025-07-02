@@ -13,5 +13,6 @@ public interface TeacherMapper {
     @Mapping(target = "assignedClassClassName", source = "assignedClass.className")
     TeacherResponse toTeacherDTO(Teacher teacher);
 
+    @Mapping(target = "assignedClass", ignore = true)
     TeacherData toTeacherData(CreateTeacherRequest createTeacherRequest);
 }
